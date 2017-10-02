@@ -1,4 +1,5 @@
 import unittest
+import time
 from lib import spiderLib
 
 
@@ -117,9 +118,43 @@ class MyTestCase(unittest.TestCase):
                      "data":{},
                      "proxySetting":""}
         res = self.spider.doSpiderProxy(url, args_dict)
-        print res
+        if "html" in res:
+            flag = True
+        else:
+            flag = False
+        self.assertEqual(flag, True, "do spider tet fail")
 
+    def test_doSpiderPut(self):
+        """
+        this UT used to test function doSpiderPut
+        """
+        # do test whithout  url
+        url = ""
+        args_dict = {"headers":{},
+                     "data":{},
+                     "proxySetting":""}
+        try:
+            res = self.spider.doSpiderPut(url, args_dict)
+        except Exception, e:
+            expectMessage = "this url is not set,check it"
+            expectStatus_code = 400
+            self.assertEqual(e.message, expectMessage, "return message is not right:%s expect: %s;" \
+                             %(e.message, expectMessage))
+            self.assertEqual(e.status_code, expectStatus_code, "return status_code is not right: %d. xpect: %d" \
+                             %(e.status_code, expectStatus_code))
+        #do test  for function test
+        print "the sescond way to test function do Spider Put"
+        time.sleep(3)
+        url = "www.baidu.com"
+        args_dict = {"headers":{},
+                     "data":{},
+                     "proxySetting":""}
+        try:
+            res = self.spider.doSpiderPut(url, args_dict)
+        except Exception, e:
+            str1 = "HTTP Error 302: Found"
+            self.assertEqual(str(e), str1, "dfdfdf")
 
 
 if __name__ == '__main__':
-    print unittest.main()
+    unittest.main()
