@@ -1,6 +1,7 @@
 import urllib
 import urllib2
-import configuration
+from Exceptions import *
+
 class spiderLib():
     """
     thie class used to get files by urllib,urllib2
@@ -85,10 +86,10 @@ class spiderLib():
             args_dict = {"values": "", \
                          "headers": ""}
         url = "https://" + url
-        data  = urllib.urlencode(args_dict["data"])
+        data = urllib.urlencode(args_dict["data"])
         headers = args_dict["headers"]
         request = urllib2.Request(url, data, headers)
-        response = urllib2.urlopen(request)
+        response = urllib2.urlopen(request, timeout=100)
         return response.read()
 
     def doSpiderProxy(self, url, args_dict=None ,proxy_enable=False):
@@ -121,3 +122,31 @@ class spiderLib():
             except Exception, e:
                 print "argument error",e
                 return -1
+
+
+    def doSpiderPut(self, url, args_dict=None):
+        """
+         using to do spider using PUT
+         put data with post
+        :param url: the web url spider for
+        :param args_dict: args_dict = {
+                        "data" : {"***":"***"},
+                        "headers" : {"***" :"****"}
+                 }
+        :return: spider results
+        """
+        # using proto https
+        if url == "":
+            raise UrlException("this url is not set,check it")
+            #return -1
+        if args_dict == None:
+            return self.doSpider(url)
+        url = "https://" + url
+        data = urllib.urlencode(args_dict["data"])
+        request = urllib2.Request(url, data)
+        request.get_method = lambda : 'PUT'
+        response = urllib2.urlopen(request)
+        return response.read()
+
+
+
