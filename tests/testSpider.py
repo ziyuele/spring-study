@@ -155,6 +155,17 @@ class MyTestCase(unittest.TestCase):
             str1 = "HTTP Error 302: Found"
             self.assertEqual(str(e), str1, "dfdfdf")
 
+    def test_doSpiderURLError(self):
+        """
+        this UT used to test functon doSpiderURLError
+        """
+        url = "www.baiidu.com"
+        args_dict = None
+        try:
+            res = self.spider.doSpiderURLError(url)
+        except Exception, e:
+            print e.message
+
 
 if __name__ == '__main__':
     unittest.main()

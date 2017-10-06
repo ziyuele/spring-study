@@ -137,7 +137,7 @@ class spiderLib():
         """
         # using proto https
         if url == "":
-            raise UrlException("this url is not set,check it")
+            raise UrlException("the url is not set,check it")
             #return -1
         if args_dict == None:
             return self.doSpider(url)
@@ -148,5 +148,33 @@ class spiderLib():
         response = urllib2.urlopen(request)
         return response.read()
 
+    def doSpiderURLError(self, url, args_dict=None):
+        """
+        using to deal with url Error
+        :param url: the web url spider for
+        :param args_dict: args_dict = {
+                            "data" : {"***" : "***"},
+                            "headers" : {"***" : "***"}
+                            ......
+                            }
+        :return: spider results
+        """
+        if url == "" or url == None:
+            raise UrlException("the url is not set,check it")
+        else:
+            url = "https://" + url
+        try:
+            if args_dict != None:
+                data = urllib.urlencode(args_dict["data"])
+                headers = args_dict["headers"]
+                request = urllib2.Request(url, data, headers)
+            else:
+                request = urllib2.Request(url)
+            response = urllib2.urlopen(request)
+            return response.read()
+        except urllib2.HTTPError, e:
+            print "spider Error"
+            print e.reason
+            print e.code
 
 
