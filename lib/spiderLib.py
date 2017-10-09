@@ -1,5 +1,6 @@
 import urllib
 import urllib2
+import cookielib
 from Exceptions import *
 
 class spiderLib():
@@ -177,4 +178,52 @@ class spiderLib():
             print e.reason
             print e.code
 
+    def doSpiderCookie(self, url, args_dict=None):
+        """
+        :param url: the url spide for
+        :param args_dict:
+        :return: the spider results
+        """
+        if url == "" or url == None:
+            raise UrlException("url is not set, check it")
+            return -1
+        url = "http://" + url
+        # save cookie to variable
+        cookie = cookielib.CookieJar()
+        # save cookie to file
+        fileName = "cookies"
+        cookie = cookielib.MozillaCookieJar(fileName)
+        handers = urllib2.HTTPCookieProcessor(cookie)
+        opener = urllib2.build_opener(handers)
 
+        response = opener.open(url)
+        #print cookie
+        #for item in cookie:
+        #   print item.name + ":" + item.value
+
+        cookie.save(ignore_discard=True, ignore_expires=True)
+        return fileName
+
+    def doSpiderUseCookie(self, url1, url2, args_dict=None):
+        """
+        :param url1: the url spider for used to get cookie
+        :param url2: the url spider for
+        :param args_dict: pass
+        :return: spider results
+        """
+        if url2 == "" or url2 == None:
+            raise UrlException("spider url is not set,check it")
+            return -1
+        url2 = "http://" + url2
+        fileName = self.doSpiderCookie(url1)
+        # get cookie
+        cookie = cookielib.MozillaCookieJar()
+        cookie.load(fileName, ignore_discard=True, ignore_expires=True)
+
+        handers = urllib2.HTTPCookieProcessor(cookie)
+        #create request
+        request = urllib2.Request(url2)
+        #load cookie
+        opener = urllib2.build_opener(handers)
+        response = opener.open(request)
+        return response.read()

@@ -136,10 +136,10 @@ class MyTestCase(unittest.TestCase):
         try:
             res = self.spider.doSpiderPut(url, args_dict)
         except Exception, e:
-            expectMessage = "this url is not set,check it"
+            expectMessage = "the url is not set,check it"
             expectStatus_code = 400
             self.assertEqual(e.message, expectMessage, "return message is not right:%s expect: %s;" \
-                             %(e.message, expectMessage))
+                             % (e.message, expectMessage))
             self.assertEqual(e.status_code, expectStatus_code, "return status_code is not right: %d. xpect: %d" \
                              %(e.status_code, expectStatus_code))
         #do test  for function test
@@ -157,7 +157,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_doSpiderURLError(self):
         """
-        this UT used to test functon doSpiderURLError
+        this UT used to test function doSpiderURLError
         """
         url = "www.baiidu.com"
         args_dict = None
@@ -166,6 +166,21 @@ class MyTestCase(unittest.TestCase):
         except Exception, e:
             print e.message
 
+    def test_doSpiderCookie(self):
+        """
+        this UT used to test function doSpiderCookie
+        """
+        url = "www.baidu.com"
+        res = self.spider.doSpiderCookie(url)
+        print res
 
+    def test_doSpiderUseCookie(self):
+        """
+        this UT used to test function doSpiderUseCookie
+        """
+        url1 = "www.baidu.com"
+        url2 = "www.baidu.com"
+        res = self.spider.doSpiderUseCookie(url1,url2)
+        print res
 if __name__ == '__main__':
     unittest.main()
