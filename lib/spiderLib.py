@@ -124,7 +124,6 @@ class spiderLib():
                 print "argument error",e
                 return -1
 
-
     def doSpiderPut(self, url, args_dict=None):
         """
          using to do spider using PUT

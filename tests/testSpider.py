@@ -3,7 +3,7 @@ import time
 from lib import spiderLib
 
 
-class MyTestCase(unittest.TestCase):
+class TestSpiderLib(unittest.TestCase):
 
 
     def setUp(self):
@@ -182,5 +182,6 @@ class MyTestCase(unittest.TestCase):
         url2 = "www.baidu.com"
         res = self.spider.doSpiderUseCookie(url1,url2)
         print res
+
 if __name__ == '__main__':
     unittest.main()

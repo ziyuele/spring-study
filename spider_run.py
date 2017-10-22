@@ -1,7 +1,5 @@
-from lib import configuration
+from  lib import spiderLib
 
 if __name__ == "__main__":
-    """ """
-    cfg  = configuration.configuration()
-    res = cfg.getConfig("spider","SPIDER.URL")
-    print res
+    """start spider"""
+    spiderLib.spiderLib().doSpider()
