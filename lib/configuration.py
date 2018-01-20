@@ -7,15 +7,16 @@ class configuration():
     """
     def __init__(self, path=""):
         """init function"""
+	homepath = os.getcwd()
         try:
             if path == "":
-                path = "conf/spisder.conf"
+                path = homepath + "/conf/spisder.conf"
             self.config = ConfigParser.ConfigParser()
             self.cfg = self.config.readfp(open(path))
-        except :
-            homepath = os.getcwd()
-            print "read file err,check if the file exists path: %s/conf/spider.conf"\
-                        % homepath
+        except Exception as e:
+	    print e.message
+            #print "read file err,check if the file exists path: %s"\
+            #            % ( path )
 
     def __del__(self):
         """ """
@@ -26,9 +27,8 @@ class configuration():
         :param option: select options from conf
         :return:
         """
-        elements = self.config.get(sections,option)
         try:
             elements = self.config.get(sections,option)
             return elements
         except:
-            return -1
+            return None
