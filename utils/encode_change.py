@@ -4,12 +4,6 @@
 # Author : kangjian (kangjian03@baidu.com)
 # encode_change.py
 
-# !/usr/bin/env python
-# -*- coding: utf-8 -*-
-# 2018/10/16 上午10:44
-# Author : kangjian (kangjian03@baidu.com)
-# text_encoders.py
-
 import sys
 
 def usage():
