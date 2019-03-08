@@ -1,10 +1,3 @@
-# web_spider
-a web spider developed by python
+## Spring Doc Chinese
 
-DEVELOPING 
-USAGE :
-1.CONFIG YOU SPIDER URL:
-conf/spider.conf :
-
-2.RUN SPIDER SCRIPTS
-python spider_run.py
+自己学习， 想起就更新， 想不起就拉倒
