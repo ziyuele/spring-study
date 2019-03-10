@@ -86,3 +86,61 @@ Sping 配置由至少一个Bean定义组成, 在基于XML的配置中使用```<b
 - class 属性定义了Bean类型及其使用的类名
 
 id属性的值指的是协作对象, 这个实例没有显示用于协作的对象的XML, 具体信息参见： ![dependicies](https://docs.spring.io/spring/docs/5.1.5.RELEASE/spring-framework-reference/core.html#beans-dependencies)
+
+##### 1.2.2 实例话一个容器
+
+容器的构造方式支持从多种外部资源配置加载, 例如本地文件系统， java CLASSPATH等  
+
+```Java
+WebApplicationContext context = new ClassPathXMLApplicationContex("services.xml", "doo.xml")
+```
+
+```
+在了解Spring IoC容器之后, 你可能想要了解更多关于Spring的资源抽象， 这种为URI语法定义的
+读取输入流的一种机制 参见![Application Contexts and Resource Paths.](https://docs.spring.io/spring/docs/5.1.5.RELEASE/spring-framework-reference/core.html#resources-app-ctx)
+```
+
+下面的这个例子展示了服务层的配置文件：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- services -->
+
+    <bean id="petStore" class="org.springframework.samples.jpetstore.services.PetStoreServiceImpl">
+        <property name="accountDao" ref="accountDao"/>
+        <property name="itemDao" ref="itemDao"/>
+        <!-- additional collaborators and configuration for this bean go here -->
+    </bean>
+
+    <!-- more bean definitions for services go here -->
+
+</beans>
+```
+
+这个是dao层的配置文件：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="accountDao"
+        class="org.springframework.samples.jpetstore.dao.jpa.JpaAccountDao">
+        <!-- additional collaborators and configuration for this bean go here -->
+    </bean>
+
+    <bean id="itemDao" class="org.springframework.samples.jpetstore.dao.jpa.JpaItemDao">
+        <!-- additional collaborators and configuration for this bean go here -->
+    </bean>
+
+    <!-- more bean definitions for data access objects go here -->
+
+</beans>
+```
