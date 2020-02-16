@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="compment" class="com.kj.application.autowire.autowriebyname.beans.Compment" autowire="byName">
+        <property name="name" value="kangjian"></property>
+        <!-- 通过name find 就不用注入了-->
+        <!--property name="dependency" ref="dependency"></property-->
+    </bean>
+
+    <bean id="dependency" class="com.kj.application.autowire.autowriebyname.beans.Dependency"></bean>
+</beans>

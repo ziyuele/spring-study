@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="collection" class="com.kj.application.di.collectiondi.beans.CollectionList">
+        <property name="list">
+            <list>
+                <value>listValue1</value>
+                <value>listValue2</value>
+                <value>listValue3</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="1" value="kangijan"></entry>
+                <entry key="2" value="jiankang"></entry>
+            </map>
+        </property>
+
+        <property name="set">
+            <set>
+                <value>a</value>
+                <value>b</value>
+            </set>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="age">18</prop>
+                <prop key="grade">18</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

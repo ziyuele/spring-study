@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="compment" class="com.kj.application.autowire.autowriebytype.beans.Compment" autowire="byType">
+        <property name="name" value="kangjian"></property>
+        <!-- 自动装配的时候就可以不用写这个了 -->
+        <!--property name="dependency" ref="dependency"></property-->
+    </bean>
+    <bean id="dependency" class="com.kj.application.autowire.autowriebytype.beans.Dependency"></bean>
+</beans>

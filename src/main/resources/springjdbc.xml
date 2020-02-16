@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="password" value="doc_wr"/>
+        <property name="username" value="doc_wr"/>
+        <property name="url" value="jdbc:mysql://140.143.132.21:8806/spring_test"/>
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+    </bean>
+
+    <bean id="studentTemplate" class="com.kj.application.springjdbc.jdbcsample.database.StudentTemplate" autowire="constructor"></bean>
+</beans>
