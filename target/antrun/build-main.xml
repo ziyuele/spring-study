@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project name="maven-antrun-" default="main"  >
-<target name="main">
-  <echo>copy /Users/kangjian03/IdeaProjects/springtest/bin /Users/kangjian03/IdeaProjects/springtest/target/bin</echo>
-  <copy todir="/Users/kangjian03/IdeaProjects/springtest/target/bin/">
-    <fileset dir="/Users/kangjian03/IdeaProjects/springtest/bin"/>
-  </copy>
-</target>
-</project>
