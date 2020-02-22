@@ -1,12 +1,7 @@
-package com.kj.application.springjdbc.jdbctrasaction.programmingtransaction.database;
+package com.kj.application.springjdbc.jdbctrasaction.statementtransaction.database;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
-import com.kj.application.springjdbc.jdbcsample.database.StudentDTO;
-
-@Repository
 public interface StudentDAO {
 
     void create(String name, Integer age);

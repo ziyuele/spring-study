@@ -13,7 +13,7 @@ import com.kj.application.aspect.aspectjbased.beans.CompmentBean;
  *  EnableAspectJAutoProxy 效果等同于： <aop:aspectj-autoproxy/>
  */
 
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(exposeProxy = true)
 @Configuration
 @ComponentScan(basePackages = "com.kj.application.aspect.aspectjbased")
 public class Intro {
@@ -34,5 +34,9 @@ public class Intro {
         intro.compmentBean.doSomethingNew();
         System.out.println("=========================================");
         intro.compmentBean.doAround();
+        System.out.println("=========================================");
+        intro.compmentBean.innerInvoke();
+        System.out.println("=========================================");
+        intro.compmentBean.innerInvokeWithAop();
     }
 }

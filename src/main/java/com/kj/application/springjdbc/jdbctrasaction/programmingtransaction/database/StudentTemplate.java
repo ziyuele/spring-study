@@ -2,16 +2,11 @@ package com.kj.application.springjdbc.jdbctrasaction.programmingtransaction.data
 
 import java.util.List;
 
-import javax.sql.DataSource;
-import javax.xml.crypto.Data;
-
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
