@@ -7,6 +7,7 @@
     <groupId>com.kangjian</groupId>
     <artifactId>spring-test</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <jdk.version>1.8</jdk.version>
@@ -93,7 +94,20 @@
                 <artifactId>spring-tx</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
+            <!-- spring mvc -->
+            <!--
+             spring-web 和 spring-webmvc
+             spring-web 提供了核心 HTTP 集成，包括一些便捷的 servlet 过滤器， Spring HTTP 调用，用于集成其它 web 框架的基础结构以及技术（Hessian，Burlap）。
+             spring-webmvc 是 Spring MVC 的一个实现。spriing-webmvc 依赖于 spring-web，这样包含它就会间接地添加 spring-web。不必显示添加 spring-web。
+             !-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
         </dependencies>
+
 
     <build>
         <!-- from compile -->
