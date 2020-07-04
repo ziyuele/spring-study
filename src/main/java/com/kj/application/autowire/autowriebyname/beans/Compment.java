@@ -1,27 +1,14 @@
 package com.kj.application.autowire.autowriebyname.beans;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class Compment {
 
     private Dependency dependency;
     private String name;
-
-    public Dependency getDependency() {
-        return dependency;
-    }
-
-    public void setDependency(Dependency dependency) {
-        this.dependency = dependency;
-    }
-
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void doWork() {
         dependency.doSomething();
